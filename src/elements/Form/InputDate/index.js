@@ -3,15 +3,15 @@ import propTypes from 'prop-types';
 import { DateRange } from "react-date-range";
 
 import "./index.scss";
-import "react-date-range/dist/style.css";
-import "react-date-range/dist/theme/default.css";
+import 'react-date-range/dist/styles.css';
+import 'react-date-range/dist/theme/default.css';
 
 import formatDate from 'utils/formatDate'
 import iconCalendar from 'assets/images/icon-calendar.svg'
 
 export default function Date(props) {
     const {value, placeholder, name}  = props;
-    const {isShowed, setIsShowed} = useState(false)
+    const [isShowed, setIsShowed] = useState(false)
 
     const datePickerChange = value => {
         const target = {
@@ -42,7 +42,9 @@ export default function Date(props) {
         focus.indexOf(1) < 0 && setIsShowed(false)
     }
 
-    const displayDate = `${value.startDate ? formatDate(value.startDate) : ""}${ value.endDate ? " - " + formatDate(value.endDate) : ""}`;
+    const displayDate = `${value.startDate ? formatDate(value.startDate) : ""}${
+        value.endDate ? " - " + formatDate(value.endDate) : ""
+      }`;
 
     return (
         <div ref={refDate} className={["input-date mb-3", props.outerClassName].join(" ")}>
@@ -52,11 +54,22 @@ export default function Date(props) {
                         <img src={iconCalendar} alt="icon calendar" />
                     </span>
                 </div>
-                <input readOnly type="text" className='form-control' value={displayDate} placeholder={placeholder} onClick={() => setIsShowed(!isShowed)} />
+                <input 
+                    readOnly 
+                    type="text" 
+                    className='form-control' 
+                    value={displayDate} 
+                    placeholder={placeholder} 
+                    onClick={() => setIsShowed(!isShowed)} />
 
                 {isShowed && (
                     <div className="date-range-wrapper">
-                        <DateRange editableDateInputs={true} onChange={datePickerChange} moveRangeOnFirstSelection={false} ranges={[value]} />
+                        <DateRange 
+                        editableDateInputs={true} 
+                        onChange={datePickerChange} 
+                        moveRangeOnFirstSelection={false} 
+                        onRangeFocusChange={check}
+                        ranges={[value]} />
                     </div>
                 )}
             </div>
