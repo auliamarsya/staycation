@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import propTypes from 'prop-types'
+import { withRouter } from 'utils/withRouter'
+
 import InputNumber from 'elements/Form/InputNumber'
 import InputDate from 'elements/Form/InputDate'
 import Button from 'elements/Button'
-
-export default class BookingForm extends Component {
+class BookingForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -14,9 +15,11 @@ export default class BookingForm extends Component {
                     startDate: new Date(),
                     endDate: new Date(),
                     key: "selection"
-                } 
+                }
             }
         }
+
+        this.startBooking = this.startBooking.bind(this);
     }
 
     updateData = e => {
@@ -28,11 +31,11 @@ export default class BookingForm extends Component {
             }
         })
     }
-
-    componentDidUpdate(prevProps, prevState){
+    
+    componentDidUpdate(prevProps, prevState) {
         const { data } = this.state
 
-        if(prevState.data.date !== data.date){
+        if (prevState.data.date !== data.date) {
             const startDate = new Date(data.date.startDate)
             const endDate = new Date(data.date.endDate)
             const countDuration = new Date(endDate - startDate).getDate()
@@ -45,7 +48,7 @@ export default class BookingForm extends Component {
             })
         }
 
-        if(prevState.data.duration !== data.duration){
+        if (prevState.data.duration !== data.duration) {
             const startDate = new Date(data.date.startDate)
             const endDate = new Date(
                 startDate.setDate(startDate.getDate() + +data.duration - 1)
@@ -64,12 +67,27 @@ export default class BookingForm extends Component {
         }
     }
 
+    startBooking = () => {
+        const { data } = this.state;
+
+        this.props.startBooking({
+            _id: this.props.itemDetails._id,
+            duration: data.duration,
+            date: {
+                startDate: data.date.startDate,
+                endData: data.date.endDate
+            }
+        })
+
+        this.props.navigate('/checkout')
+    }
+
     render() {
         const { data } = this.state
         const { itemDetails, startBooking } = this.props
 
         return (
-            <div className="card bordered" style={{padding: '60px 80px'}}>
+            <div className="card bordered" style={{ padding: '60px 80px' }}>
                 <h4 className="mb-3">Start Booking</h4>
                 <h5 className="h2 text-teal mb-4">
                     ${itemDetails.price}{" "}
@@ -78,14 +96,14 @@ export default class BookingForm extends Component {
                     </span>
                 </h5>
                 <label htmlFor="duration">How long you will stay?</label>
-                    <InputNumber 
-                        max={30}
-                        suffix={" night"}
-                        isSuffixPlural
-                        onChange={this.updateData}
-                        name="duration"
-                        value={data.duration}
-                    />
+                <InputNumber
+                    max={30}
+                    suffix={" night"}
+                    isSuffixPlural
+                    onChange={this.updateData}
+                    name="duration"
+                    value={data.duration}
+                />
 
                 <label htmlFor="date">Pick a date</label>
                 <InputDate onChange={this.updateData} name="date" value={data.date}></InputDate>
@@ -103,7 +121,7 @@ export default class BookingForm extends Component {
                     hasShadow
                     isPrimary
                     isBlock
-                    onClick={startBooking}
+                    onClick={this.startBooking}
                 >
                     Continue to Book
                 </Button>
@@ -117,3 +135,5 @@ BookingForm.propTypes = {
     startBooking: propTypes.func,
 
 }
+
+export default withRouter(BookingForm)
