@@ -7,15 +7,15 @@ export default function Footer() {
         <footer className='mb-10'>
             <div className="container">
                 <div className="row">
-                    <div className="col-4">
+                    <div className="col-sm-12 col-md-4">
                         <IconText />
                         <p className="brand-tagline">
                             We kaboom your satisfy holiday instanly and memorable.
                         </p>
                     </div>
 
-                    <div className="col-8 row justify-content-end">
-                        <div className="col-3 mr-5">
+                    <div className="col-sm-12 col-md-8 row justify-content-end">
+                        <div className="col-sm-12 col-md-3 mr-5">
                             <h6 className="mt-2">for Beginners</h6>
                             <ul className="list-group list-group-flush">
                                 <li className="list-group-item">
@@ -29,7 +29,7 @@ export default function Footer() {
                                 </li>
                             </ul>
                         </div>
-                        <div className="col-3 mr-5">
+                        <div className="col-sm-12 col-md-3 mr-5">
                             <h6 className="mt-2">Explore Us</h6>
                             <ul className="list-group list-group-flush">
                                 <li className="list-group-item">
@@ -43,7 +43,7 @@ export default function Footer() {
                                 </li>
                             </ul>
                         </div>
-                        <div className="col-3">
+                        <div className="col-sm-12 col-md-3">
                             <h6 className="mt-2">Connect Us</h6>
                             <ul className="list-group list-group-flush">
                                 <li className="list-group-item">

@@ -7,7 +7,7 @@ export default function Controller(props) {
         <section>
             <div className="container">
                 <div className="row justify-content-center">
-                    <div className="col-3">{props.children}</div>
+                    <div className="col-sm-12 col-md-3">{props.children}</div>
                 </div>
             </div>
         </section>

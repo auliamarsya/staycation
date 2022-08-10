@@ -75,7 +75,7 @@ class BookingForm extends Component {
             duration: data.duration,
             date: {
                 startDate: data.date.startDate,
-                endData: data.date.endDate
+                endDate: data.date.endDate
             }
         })
 
@@ -87,7 +87,7 @@ class BookingForm extends Component {
         const { itemDetails, startBooking } = this.props
 
         return (
-            <div className="card bordered" style={{ padding: '60px 80px' }}>
+            <div className="card bordered card-booking">
                 <h4 className="mb-3">Start Booking</h4>
                 <h5 className="h2 text-teal mb-4">
                     ${itemDetails.price}{" "}
@@ -133,7 +133,6 @@ class BookingForm extends Component {
 BookingForm.propTypes = {
     itemDetails: propTypes.object,
     startBooking: propTypes.func,
-
 }
 
 export default withRouter(BookingForm)

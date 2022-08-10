@@ -7,7 +7,7 @@ export default function Completed() {
     <Fade>
         <div className="container" style={{ marginBottom: 30}}>
             <div className="row justify-content-center text-center">
-                <div className="col-4">
+                <div className="col-sm-12 col-md-4">
                     <img src={CompletedIllustration} alt="completed checkout" className='img-fluid' />
                     <p className="text-gray-500">
                         We will inform you via email later once the transaction has been accepted

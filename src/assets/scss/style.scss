@@ -45,6 +45,49 @@
 @import "utilities";
 @import "print";
 
+
+@include media-breakpoint-down(sm) {
+    .image-hero-placeholder {
+        width: 100% !important;
+        margin-top: 70px;
+    }
+
+    .container-grid {
+        .item.column-4, .item.column-3, .item.column-7, .item.column-5 {
+            grid-column-end: span 12;
+        }
+    }
+
+    .card-booking {
+        padding: 30px 40px !important;
+    }
+
+    .img-booking-step1, .card-booking-bank{
+        padding-right: 15px !important;
+    }
+
+    .form-booking-step1, .card-booking-payment {
+        padding-left: 15px !important;
+    }
+}
+
+.img-booking-step1, .card-booking-bank {
+    padding-right: 80px;
+}
+
+.form-booking-step1, .card-booking-payment {
+    padding-left: 80px;
+}
+
+.card-booking {
+    padding: 60px 80px;
+}
+
+.image-hero-placeholder {
+        width: 470px;
+        height: 400px;
+}
+
 .brand-text-icon {
     font-size: 26px;
     font-weight: 500;
