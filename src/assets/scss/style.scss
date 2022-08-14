@@ -262,6 +262,12 @@ section {
   height: 500px;
 }
 
+.profile-hero,
+.profile-hero img {
+    width: 365px;
+    height: 500px;
+    object-fit: cover;
+}
 footer {
     border-top: 1px solid $gray-200;
     padding-top: 50px;
